@@ -67,7 +67,8 @@
     NSMutableDictionary *_configurationLists;
 }
 
-+ (MJProject *)projectWithContentsOfURL:(NSURL *)url;
++ (MJProject *)projectWithContentsOfURL:(NSURL *)url
+                                  error:(__autoreleasing NSError **)error
 {
     MJProject *project = [[MJProject alloc] init];
     
@@ -77,7 +78,11 @@
                                    propertyListWithData:data
                                                 options:NSPropertyListImmutable
                                                  format:NULL
-                                                  error:NULL];
+                                                  error:error];
+    if (!specification) {
+        return nil;
+    }
+    
     [project setSpecification:specification];
     [project parseSpecification];
     

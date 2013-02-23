@@ -68,7 +68,8 @@
 @property (nonatomic, readonly, strong) NSDictionary *buildConfigurations;
 @property (nonatomic, readonly, strong) NSDictionary *configurationLists;
 
-+ (MJProject *)projectWithContentsOfURL:(NSURL *)url;
++ (MJProject *)projectWithContentsOfURL:(NSURL *)url
+                                  error:(__autoreleasing NSError **)error;
 
 - (MJPBXBuildFile *)buildFileById:(NSString *)uuid;
 - (MJPBXFileReference *)fileReferenceById:(NSString *)uuid;
