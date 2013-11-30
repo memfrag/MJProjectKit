@@ -120,298 +120,287 @@
     _allObjects = [NSMutableDictionary dictionaryWithCapacity:100];
     
     _buildFiles = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXBuildFile"]) {
-            MJPBXBuildFile *buildFile = [[MJPBXBuildFile alloc] init];
-            buildFile.uuid = uuid;
-            buildFile.project = self;
-            buildFile.fileRef = [object objectForKey:@"fileRef"];
-            [_buildFiles setObject:buildFile forKey:uuid];
-            [_buildFilesArray addObject:buildFile];
-            [_allObjects setObject:buildFile forKey:uuid];
-        }
-    }
-    
     _fileReferences = [NSMutableDictionary dictionaryWithCapacity:10];
+    _frameworksBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
+    _groups = [NSMutableDictionary dictionaryWithCapacity:10];
+    _nativeTargets = [NSMutableDictionary dictionaryWithCapacity:10];
+    _projects = [NSMutableDictionary dictionaryWithCapacity:10];
+    _resourcesBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
+    _sourcesBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
+    _variantGroups = [NSMutableDictionary dictionaryWithCapacity:10];
+    _containerItemProxies = [NSMutableDictionary dictionaryWithCapacity:10];
+    _targetDependencies = [NSMutableDictionary dictionaryWithCapacity:10];
+    _referenceProxies = [NSMutableDictionary dictionaryWithCapacity:10];
+    _shellScriptBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
+    _buildConfigurations = [NSMutableDictionary dictionaryWithCapacity:10];
+    _configurationLists = [NSMutableDictionary dictionaryWithCapacity:10];
+
     for (NSString *uuid in [self.objects allKeys]) {
         NSDictionary *object = [self.objects objectForKey:uuid];
         NSString *objectIsA = [object objectForKey:@"isa"];
         if ([objectIsA isEqualToString:@"PBXFileReference"]) {
-            MJPBXFileReference *fileReference = [[MJPBXFileReference alloc] init];
-            fileReference.uuid = uuid;
-            fileReference.project = self;
-            fileReference.explicitFileType = [object objectForKey:@"explicitFileType"];
-            fileReference.includeInIndex = [object objectForKey:@"includeInIndex"];
-            fileReference.lastKnownFileType = [object objectForKey:@"lastKnownFileType"];
-            fileReference.name = [object objectForKey:@"name"];
-            fileReference.path = [object objectForKey:@"path"];
-            fileReference.sourceTree = [object objectForKey:@"sourceTree"];
-            if (!fileReference.name) {
-                if (fileReference.path) {
-                    fileReference.name = fileReference.path;
-                } else {
-                    fileReference.name = @"<Unknown File>";
-                }
-            }
-            [_fileReferences setObject:fileReference forKey:uuid];
-            [_fileReferencesArray addObject:fileReference];
-            [_allObjects setObject:fileReference forKey:uuid];
+            [self addFileReference:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXFrameworksBuildPhase"]) {
+            [self addFrameworksBuildPhase:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXGroup"]) {
+            [self addGroup:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXNativeTarget"]) {
+            [self addNativeTarget:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXResourcesBuildPhase"]) {
+            [self addResourcesBuildPhase:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXSourcesBuildPhase"]) {
+            [self addSourcesBuildPhase:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXVariantGroup"]) {
+            [self addVariantGroup:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXContainerItemProxy"]) {
+            [self addContainerItemProxy:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXTargetDependency"]) {
+            [self addReferenceProxy:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXReferenceProxy"]) {
+            [self addReferenceProxy:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"PBXShellScriptBuildPhase"]) {
+            [self addShellScriptBuildPhase:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"XCBuildConfiguration"]) {
+            [self addBuildConfiguration:object uuid:uuid];
+        } else if ([objectIsA isEqualToString:@"XCConfigurationList"]) {
+            [self addConfigurationList:object uuid:uuid];
+        } else {
+            NSLog(@"WARNING: Unknown object type '%@' in project file.", objectIsA);
         }
     }
-    
-    _frameworksBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXFrameworksBuildPhase"]) {
-            MJPBXFrameworksBuildPhase *frameworksBuildPhase = [[MJPBXFrameworksBuildPhase alloc] init];
-            frameworksBuildPhase.uuid = uuid;
-            frameworksBuildPhase.project = self;
-            frameworksBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
-            frameworksBuildPhase.files = [object objectForKey:@"files"];
-            frameworksBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostProcessing"];
-            [_frameworksBuildPhases setObject:frameworksBuildPhase forKey:uuid];
-            [_frameworksBuildPhasesArray addObject:frameworksBuildPhase];
-            [_allObjects setObject:frameworksBuildPhase forKey:uuid];
+}
+
+- (void)addBuildFile:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXBuildFile *buildFile = [[MJPBXBuildFile alloc] init];
+    buildFile.uuid = uuid;
+    buildFile.project = self;
+    buildFile.fileRef = [object objectForKey:@"fileRef"];
+    [_buildFiles setObject:buildFile forKey:uuid];
+    [_buildFilesArray addObject:buildFile];
+    [_allObjects setObject:buildFile forKey:uuid];
+}
+
+- (void)addFileReference:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXFileReference *fileReference = [[MJPBXFileReference alloc] init];
+    fileReference.uuid = uuid;
+    fileReference.project = self;
+    fileReference.explicitFileType = [object objectForKey:@"explicitFileType"];
+    fileReference.includeInIndex = [object objectForKey:@"includeInIndex"];
+    fileReference.lastKnownFileType = [object objectForKey:@"lastKnownFileType"];
+    fileReference.name = [object objectForKey:@"name"];
+    fileReference.path = [object objectForKey:@"path"];
+    fileReference.sourceTree = [object objectForKey:@"sourceTree"];
+    if (!fileReference.name) {
+        if (fileReference.path) {
+            fileReference.name = fileReference.path;
+        } else {
+            fileReference.name = @"<Unknown File>";
         }
     }
-    
-    _groups = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXGroup"]) {
-            MJPBXGroup *group = [[MJPBXGroup alloc] init];
-            group.uuid = uuid;
-            group.project = self;
-            group.children = [object objectForKey:@"children"];
-            group.name = [object objectForKey:@"name"];
-            group.sourceTree = [object objectForKey:@"sourceTree"];
-            group.path = [object objectForKey:@"path"];
-            if (!group.name) {
-                if (group.path) {
-                    group.name = group.path;
-                } else {
-                    group.name = @"<Unknown Group>";
-                }
-            }
-            [_groups setObject:group forKey:uuid];
-            [_groupsArray addObject:group];
-            [_allObjects setObject:group forKey:uuid];
+    [_fileReferences setObject:fileReference forKey:uuid];
+    [_fileReferencesArray addObject:fileReference];
+    [_allObjects setObject:fileReference forKey:uuid];
+}
+
+- (void)addFrameworksBuildPhase:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXFrameworksBuildPhase *frameworksBuildPhase = [[MJPBXFrameworksBuildPhase alloc] init];
+    frameworksBuildPhase.uuid = uuid;
+    frameworksBuildPhase.project = self;
+    frameworksBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
+    frameworksBuildPhase.files = [object objectForKey:@"files"];
+    frameworksBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostProcessing"];
+    [_frameworksBuildPhases setObject:frameworksBuildPhase forKey:uuid];
+    [_frameworksBuildPhasesArray addObject:frameworksBuildPhase];
+    [_allObjects setObject:frameworksBuildPhase forKey:uuid];
+}
+
+- (void)addGroup:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXGroup *group = [[MJPBXGroup alloc] init];
+    group.uuid = uuid;
+    group.project = self;
+    group.children = [object objectForKey:@"children"];
+    group.name = [object objectForKey:@"name"];
+    group.sourceTree = [object objectForKey:@"sourceTree"];
+    group.path = [object objectForKey:@"path"];
+    if (!group.name) {
+        if (group.path) {
+            group.name = group.path;
+        } else {
+            group.name = @"<Unknown Group>";
         }
     }
-    
-    _nativeTargets = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXNativeTarget"]) {
-            MJPBXNativeTarget *nativeTarget = [[MJPBXNativeTarget alloc] init];
-            nativeTarget.uuid = uuid;
-            nativeTarget.project = self;
-            nativeTarget.buildConfigurationList = [object objectForKey:@"buildConfigurationList"];
-            nativeTarget.buildPhases = [object objectForKey:@"buildPhases"];
-            nativeTarget.buildRules = [object objectForKey:@"buildRules"];
-            nativeTarget.dependencies = [object objectForKey:@"dependencies"];
-            nativeTarget.name = [object objectForKey:@"name"];
-            nativeTarget.productName = [object objectForKey:@"productName"];
-            nativeTarget.productReference = [object objectForKey:@"productReference"];
-            nativeTarget.productType = [object objectForKey:@"productType"];
-            [_nativeTargets setObject:nativeTarget forKey:uuid];
-            [_nativeTargetsArray addObject:nativeTarget];
-            [_allObjects setObject:nativeTarget forKey:uuid];
-        }
+    [_groups setObject:group forKey:uuid];
+    [_groupsArray addObject:group];
+    [_allObjects setObject:group forKey:uuid];
+}
+
+- (void)addNativeTarget:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXNativeTarget *nativeTarget = [[MJPBXNativeTarget alloc] init];
+    nativeTarget.uuid = uuid;
+    nativeTarget.project = self;
+    nativeTarget.buildConfigurationList = [object objectForKey:@"buildConfigurationList"];
+    nativeTarget.buildPhases = [object objectForKey:@"buildPhases"];
+    nativeTarget.buildRules = [object objectForKey:@"buildRules"];
+    nativeTarget.dependencies = [object objectForKey:@"dependencies"];
+    nativeTarget.name = [object objectForKey:@"name"];
+    nativeTarget.productName = [object objectForKey:@"productName"];
+    nativeTarget.productReference = [object objectForKey:@"productReference"];
+    nativeTarget.productType = [object objectForKey:@"productType"];
+    [_nativeTargets setObject:nativeTarget forKey:uuid];
+    [_nativeTargetsArray addObject:nativeTarget];
+    [_allObjects setObject:nativeTarget forKey:uuid];
+}
+
+- (void)addProject:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXProject *project = [[MJPBXProject alloc] init];
+    project.uuid = uuid;
+    project.project = self;
+    project.attributes = [object objectForKey:@"attributes"];
+    project.buildConfigurationList = [object objectForKey:@"buildConfigurationList"];
+    project.compatibilityVersion = [object objectForKey:@"compatibilityVersion"];
+    project.developmentRegion = [object objectForKey:@"developmentRegion"];
+    project.hasScannedForEncodings = [object objectForKey:@"hasScannedForEncodings"];
+    project.knownRegions = [object objectForKey:@"knownRegions"];
+    project.mainGroup = [object objectForKey:@"mainGroup"];
+    project.projectReferences = [object objectForKey:@"projectReferences"];
+    project.productRefGroup = [object objectForKey:@"productRefGroup"];
+    project.projectDirPath = [object objectForKey:@"projectDirPath"];
+    project.projectRoot = [object objectForKey:@"projectRoot"];
+    project.targets = [object objectForKey:@"targets"];
+    [_projects setObject:project forKey:uuid];
+    [_projectsArray addObject:project];
+    [_allObjects setObject:project forKey:uuid];
+}
+
+- (void)addResourcesBuildPhase:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXResourcesBuildPhase *resourcesBuildPhase = [[MJPBXResourcesBuildPhase alloc] init];
+    resourcesBuildPhase.uuid = uuid;
+    resourcesBuildPhase.project = self;
+    resourcesBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
+    resourcesBuildPhase.files = [object objectForKey:@"files"];
+    resourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
+    [_resourcesBuildPhases setObject:resourcesBuildPhase forKey:uuid];
+    [_resourcesBuildPhasesArray addObject:resourcesBuildPhase];
+    [_allObjects setObject:resourcesBuildPhase forKey:uuid];
+}
+
+- (void)addSourcesBuildPhase:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXSourcesBuildPhase *sourcesBuildPhase = [[MJPBXSourcesBuildPhase alloc] init];
+    sourcesBuildPhase.uuid = uuid;
+    sourcesBuildPhase.project = self;
+    sourcesBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
+    sourcesBuildPhase.files = [object objectForKey:@"files"];
+    sourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
+    [_sourcesBuildPhases setObject:sourcesBuildPhase forKey:uuid];
+    [_sourcesBuildPhasesArray addObject:sourcesBuildPhase];
+    [_allObjects setObject:sourcesBuildPhase forKey:uuid];
+}
+
+- (void)addVariantGroup:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXVariantGroup *variantGroup = [[MJPBXVariantGroup alloc] init];
+    variantGroup.uuid = uuid;
+    variantGroup.project = self;
+    variantGroup.children = [object objectForKey:@"children"];
+    variantGroup.name = [object objectForKey:@"name"];
+    variantGroup.sourceTree = [object objectForKey:@"sourceTree"];
+    if (!variantGroup.name) {
+        variantGroup.name = @"<Unknown Group>";
     }
-    
-    _projects = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXProject"]) {
-            MJPBXProject *project = [[MJPBXProject alloc] init];
-            project.uuid = uuid;
-            project.project = self;
-            project.attributes = [object objectForKey:@"attributes"];
-            project.buildConfigurationList = [object objectForKey:@"buildConfigurationList"];
-            project.compatibilityVersion = [object objectForKey:@"compatibilityVersion"];
-            project.developmentRegion = [object objectForKey:@"developmentRegion"];
-            project.hasScannedForEncodings = [object objectForKey:@"hasScannedForEncodings"];
-            project.knownRegions = [object objectForKey:@"knownRegions"];
-            project.mainGroup = [object objectForKey:@"mainGroup"];
-            project.projectReferences = [object objectForKey:@"projectReferences"];
-            project.productRefGroup = [object objectForKey:@"productRefGroup"];
-            project.projectDirPath = [object objectForKey:@"projectDirPath"];
-            project.projectRoot = [object objectForKey:@"projectRoot"];
-            project.targets = [object objectForKey:@"targets"];
-            [_projects setObject:project forKey:uuid];
-            [_projectsArray addObject:project];
-            [_allObjects setObject:project forKey:uuid];
-        }
-    }
-    
-    _resourcesBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXResourcesBuildPhase"]) {
-            MJPBXResourcesBuildPhase *resourcesBuildPhase = [[MJPBXResourcesBuildPhase alloc] init];
-            resourcesBuildPhase.uuid = uuid;
-            resourcesBuildPhase.project = self;
-            resourcesBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
-            resourcesBuildPhase.files = [object objectForKey:@"files"];
-            resourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
-            [_resourcesBuildPhases setObject:resourcesBuildPhase forKey:uuid];
-            [_resourcesBuildPhasesArray addObject:resourcesBuildPhase];
-            [_allObjects setObject:resourcesBuildPhase forKey:uuid];
-        }
-    }
-    
-    _sourcesBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXSourcesBuildPhase"]) {
-            MJPBXSourcesBuildPhase *sourcesBuildPhase = [[MJPBXSourcesBuildPhase alloc] init];
-            sourcesBuildPhase.uuid = uuid;
-            sourcesBuildPhase.project = self;
-            sourcesBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
-            sourcesBuildPhase.files = [object objectForKey:@"files"];
-            sourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
-            [_sourcesBuildPhases setObject:sourcesBuildPhase forKey:uuid];
-            [_sourcesBuildPhasesArray addObject:sourcesBuildPhase];
-            [_allObjects setObject:sourcesBuildPhase forKey:uuid];
-        }
-    }
-    
-    _variantGroups = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXVariantGroup"]) {
-            MJPBXVariantGroup *variantGroup = [[MJPBXVariantGroup alloc] init];
-            variantGroup.uuid = uuid;
-            variantGroup.project = self;
-            variantGroup.children = [object objectForKey:@"children"];
-            variantGroup.name = [object objectForKey:@"name"];
-            variantGroup.sourceTree = [object objectForKey:@"sourceTree"];
-            if (!variantGroup.name) {
-                variantGroup.name = @"<Unknown Group>";
-            }
-            [_variantGroups setObject:variantGroup forKey:uuid];
-            [_variantGroupsArray addObject:variantGroup];
-            [_allObjects setObject:variantGroup forKey:uuid];
-        }
-    }
-    
-    _containerItemProxies = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXContainerItemProxy"]) {
-            MJPBXContainerItemProxy *containerItemProxy = [[MJPBXContainerItemProxy alloc] init];
-            containerItemProxy.uuid = uuid;
-            containerItemProxy.project = self;
-            containerItemProxy.containerPortal = [object objectForKey:@"containerPortal"];
-            containerItemProxy.proxyType = [object objectForKey:@"proxyType"];
-            containerItemProxy.remoteGlobalIDString = [object objectForKey:@"remoteGlobalIDString"];
-            containerItemProxy.remoteInfo = [object objectForKey:@"remoteInfo"];
-            [_containerItemProxies setObject:containerItemProxy forKey:uuid];
-            [_containerItemProxiesArray addObject:containerItemProxy];
-            [_allObjects setObject:containerItemProxy forKey:uuid];
-        }
-    }
-    
-    _targetDependencies = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXTargetDependency"]) {
-            MJPBXTargetDependency *targetDependency = [[MJPBXTargetDependency alloc] init];
-            targetDependency.uuid = uuid;
-            targetDependency.project = self;
-            targetDependency.name = [object objectForKey:@"target"];
-            targetDependency.targetProxy = [object objectForKey:@"targetProxy"];
-            [_targetDependencies setObject:targetDependency forKey:uuid];
-            [_targetDependenciesArray addObject:targetDependency];
-            [_allObjects setObject:targetDependency forKey:uuid];
-        }
-    }
-    
-    _referenceProxies = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXReferenceProxy"]) {
-            MJPBXReferenceProxy *referenceProxy = [[MJPBXReferenceProxy alloc] init];
-            referenceProxy.uuid = uuid;
-            referenceProxy.project = self;
-            referenceProxy.fileType = [object objectForKey:@"fileType"];
-            referenceProxy.path = [object objectForKey:@"path"];
-            referenceProxy.remoteRef = [object objectForKey:@"remoteRef"];
-            referenceProxy.sourceTree = [object objectForKey:@"sourceTree"];
-            [_referenceProxies setObject:referenceProxy forKey:uuid];
-            [_referenceProxiesArray addObject:referenceProxy];
-            [_allObjects setObject:referenceProxy forKey:uuid];
-        }
-    }
-    
-    _shellScriptBuildPhases = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"PBXShellScriptBuildPhase"]) {
-            MJPBXShellScriptBuildPhase *shellScriptBuildPhase = [[MJPBXShellScriptBuildPhase alloc] init];
-            shellScriptBuildPhase.uuid = uuid;
-            shellScriptBuildPhase.project = self;
-            shellScriptBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
-            shellScriptBuildPhase.comments = [object objectForKey:@"comments"];
-            shellScriptBuildPhase.files = [object objectForKey:@"files"];
-            shellScriptBuildPhase.inputPaths = [object objectForKey:@"inputPaths"];
-            shellScriptBuildPhase.outputPaths = [object objectForKey:@"outputPaths"];
-            shellScriptBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
-            shellScriptBuildPhase.shellPath = [object objectForKey:@"shellPath"];
-            shellScriptBuildPhase.shellScript = [object objectForKey:@"shellScript"];
-            [_shellScriptBuildPhases setObject:shellScriptBuildPhase forKey:uuid];
-            [_shellScriptBuildPhasesArray addObject:shellScriptBuildPhase];
-            [_allObjects setObject:shellScriptBuildPhase forKey:uuid];
-        }
-    }
-    
-    _buildConfigurations = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"XCBuildConfiguration"]) {
-            MJXCBuildConfiguration *buildConfiguration = [[MJXCBuildConfiguration alloc] init];
-            buildConfiguration.uuid = uuid;
-            buildConfiguration.project = self;
-            buildConfiguration.buildSettings = [object objectForKey:@"buildSettings"];
-            buildConfiguration.name = [object objectForKey:@"name"];
-            [_buildConfigurations setObject:buildConfiguration forKey:uuid];
-            [_buildConfigurationsArray addObject:buildConfiguration];
-            [_allObjects setObject:buildConfiguration forKey:uuid];
-        }
-    }
-    
-    _configurationLists = [NSMutableDictionary dictionaryWithCapacity:10];
-    for (NSString *uuid in [self.objects allKeys]) {
-        NSDictionary *object = [self.objects objectForKey:uuid];
-        NSString *objectIsA = [object objectForKey:@"isa"];
-        if ([objectIsA isEqualToString:@"XCConfigurationList"]) {
-            MJXCConfigurationList *configurationList = [[MJXCConfigurationList alloc] init];
-            configurationList.uuid = uuid;
-            configurationList.project = self;
-            configurationList.buildConfigurations = [object objectForKey:@"buildConfigurations"];
-            configurationList.defaultConfigurationIsVisible = [object objectForKey:@"defaultConfigurationIsVisible"];
-            configurationList.defaultConfigurationName = [object objectForKey:@"defaultConfigurationName"];
-            [_configurationLists setObject:configurationList forKey:uuid];
-            [_configurationListsArray addObject:configurationList];
-            [_allObjects setObject:configurationList forKey:uuid];
-        }
-    }
-    
+    [_variantGroups setObject:variantGroup forKey:uuid];
+    [_variantGroupsArray addObject:variantGroup];
+    [_allObjects setObject:variantGroup forKey:uuid];
+}
+
+- (void)addContainerItemProxy:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXContainerItemProxy *containerItemProxy = [[MJPBXContainerItemProxy alloc] init];
+    containerItemProxy.uuid = uuid;
+    containerItemProxy.project = self;
+    containerItemProxy.containerPortal = [object objectForKey:@"containerPortal"];
+    containerItemProxy.proxyType = [object objectForKey:@"proxyType"];
+    containerItemProxy.remoteGlobalIDString = [object objectForKey:@"remoteGlobalIDString"];
+    containerItemProxy.remoteInfo = [object objectForKey:@"remoteInfo"];
+    [_containerItemProxies setObject:containerItemProxy forKey:uuid];
+    [_containerItemProxiesArray addObject:containerItemProxy];
+    [_allObjects setObject:containerItemProxy forKey:uuid];
+}
+
+- (void)addTargetDependency:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXTargetDependency *targetDependency = [[MJPBXTargetDependency alloc] init];
+    targetDependency.uuid = uuid;
+    targetDependency.project = self;
+    targetDependency.name = [object objectForKey:@"target"];
+    targetDependency.targetProxy = [object objectForKey:@"targetProxy"];
+    [_targetDependencies setObject:targetDependency forKey:uuid];
+    [_targetDependenciesArray addObject:targetDependency];
+    [_allObjects setObject:targetDependency forKey:uuid];
+}
+
+- (void)addReferenceProxy:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXReferenceProxy *referenceProxy = [[MJPBXReferenceProxy alloc] init];
+    referenceProxy.uuid = uuid;
+    referenceProxy.project = self;
+    referenceProxy.fileType = [object objectForKey:@"fileType"];
+    referenceProxy.path = [object objectForKey:@"path"];
+    referenceProxy.remoteRef = [object objectForKey:@"remoteRef"];
+    referenceProxy.sourceTree = [object objectForKey:@"sourceTree"];
+    [_referenceProxies setObject:referenceProxy forKey:uuid];
+    [_referenceProxiesArray addObject:referenceProxy];
+    [_allObjects setObject:referenceProxy forKey:uuid];
+}
+
+- (void)addShellScriptBuildPhase:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJPBXShellScriptBuildPhase *shellScriptBuildPhase = [[MJPBXShellScriptBuildPhase alloc] init];
+    shellScriptBuildPhase.uuid = uuid;
+    shellScriptBuildPhase.project = self;
+    shellScriptBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
+    shellScriptBuildPhase.comments = [object objectForKey:@"comments"];
+    shellScriptBuildPhase.files = [object objectForKey:@"files"];
+    shellScriptBuildPhase.inputPaths = [object objectForKey:@"inputPaths"];
+    shellScriptBuildPhase.outputPaths = [object objectForKey:@"outputPaths"];
+    shellScriptBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
+    shellScriptBuildPhase.shellPath = [object objectForKey:@"shellPath"];
+    shellScriptBuildPhase.shellScript = [object objectForKey:@"shellScript"];
+    [_shellScriptBuildPhases setObject:shellScriptBuildPhase forKey:uuid];
+    [_shellScriptBuildPhasesArray addObject:shellScriptBuildPhase];
+    [_allObjects setObject:shellScriptBuildPhase forKey:uuid];
+}
+
+- (void)addBuildConfiguration:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJXCBuildConfiguration *buildConfiguration = [[MJXCBuildConfiguration alloc] init];
+    buildConfiguration.uuid = uuid;
+    buildConfiguration.project = self;
+    buildConfiguration.buildSettings = [object objectForKey:@"buildSettings"];
+    buildConfiguration.name = [object objectForKey:@"name"];
+    [_buildConfigurations setObject:buildConfiguration forKey:uuid];
+    [_buildConfigurationsArray addObject:buildConfiguration];
+    [_allObjects setObject:buildConfiguration forKey:uuid];
+}
+
+- (void)addConfigurationList:(NSDictionary *)object uuid:(NSString *)uuid
+{
+    MJXCConfigurationList *configurationList = [[MJXCConfigurationList alloc] init];
+    configurationList.uuid = uuid;
+    configurationList.project = self;
+    configurationList.buildConfigurations = [object objectForKey:@"buildConfigurations"];
+    configurationList.defaultConfigurationIsVisible = [object objectForKey:@"defaultConfigurationIsVisible"];
+    configurationList.defaultConfigurationName = [object objectForKey:@"defaultConfigurationName"];
+    [_configurationLists setObject:configurationList forKey:uuid];
+    [_configurationListsArray addObject:configurationList];
+    [_allObjects setObject:configurationList forKey:uuid];
 }
 
 
