@@ -38,6 +38,7 @@
 #import <MJProjectKit/MJXCBuildConfiguration.h>
 #import <MJProjectKit/MJXCConfigurationList.h>
 
+// Build phases
 #import <MJProjectKit/MJBuildPhase.h>
 #import <MJProjectKit/MJPBXFrameworksBuildPhase.h>
 #import <MJProjectKit/MJPBXResourcesBuildPhase.h>

@@ -51,20 +51,35 @@
     NSMutableDictionary *_allObjects;
     
     NSMutableDictionary *_buildFiles;
+    NSMutableArray *_buildFilesArray;
     NSMutableDictionary *_fileReferences;
+    NSMutableArray *_fileReferencesArray;
     NSMutableDictionary *_frameworksBuildPhases;
+    NSMutableArray *_frameworksBuildPhasesArray;
     NSMutableDictionary *_groups;
+    NSMutableArray *_groupsArray;
     NSMutableDictionary *_nativeTargets;
+    NSMutableArray *_nativeTargetsArray;
     NSMutableDictionary *_projects;
+    NSMutableArray *_projectsArray;
     NSMutableDictionary *_resourcesBuildPhases;
+    NSMutableArray *_resourcesBuildPhasesArray;
     NSMutableDictionary *_sourcesBuildPhases;
+    NSMutableArray *_sourcesBuildPhasesArray;
     NSMutableDictionary *_variantGroups;
+    NSMutableArray *_variantGroupsArray;
     NSMutableDictionary *_containerItemProxies;
+    NSMutableArray *_containerItemProxiesArray;
     NSMutableDictionary *_referenceProxies;
+    NSMutableArray *_referenceProxiesArray;
     NSMutableDictionary *_targetDependencies;
+    NSMutableArray *_targetDependenciesArray;
     NSMutableDictionary *_shellScriptBuildPhases;
+    NSMutableArray *_shellScriptBuildPhasesArray;
     NSMutableDictionary *_buildConfigurations;
+    NSMutableArray *_buildConfigurationsArray;
     NSMutableDictionary *_configurationLists;
+    NSMutableArray *_configurationListsArray;
 }
 
 + (MJProject *)projectWithContentsOfURL:(NSURL *)url
@@ -114,6 +129,7 @@
             buildFile.project = self;
             buildFile.fileRef = [object objectForKey:@"fileRef"];
             [_buildFiles setObject:buildFile forKey:uuid];
+            [_buildFilesArray addObject:buildFile];
             [_allObjects setObject:buildFile forKey:uuid];
         }
     }
@@ -140,6 +156,7 @@
                 }
             }
             [_fileReferences setObject:fileReference forKey:uuid];
+            [_fileReferencesArray addObject:fileReference];
             [_allObjects setObject:fileReference forKey:uuid];
         }
     }
@@ -156,6 +173,7 @@
             frameworksBuildPhase.files = [object objectForKey:@"files"];
             frameworksBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostProcessing"];
             [_frameworksBuildPhases setObject:frameworksBuildPhase forKey:uuid];
+            [_frameworksBuildPhasesArray addObject:frameworksBuildPhase];
             [_allObjects setObject:frameworksBuildPhase forKey:uuid];
         }
     }
@@ -180,6 +198,7 @@
                 }
             }
             [_groups setObject:group forKey:uuid];
+            [_groupsArray addObject:group];
             [_allObjects setObject:group forKey:uuid];
         }
     }
@@ -201,6 +220,7 @@
             nativeTarget.productReference = [object objectForKey:@"productReference"];
             nativeTarget.productType = [object objectForKey:@"productType"];
             [_nativeTargets setObject:nativeTarget forKey:uuid];
+            [_nativeTargetsArray addObject:nativeTarget];
             [_allObjects setObject:nativeTarget forKey:uuid];
         }
     }
@@ -226,6 +246,7 @@
             project.projectRoot = [object objectForKey:@"projectRoot"];
             project.targets = [object objectForKey:@"targets"];
             [_projects setObject:project forKey:uuid];
+            [_projectsArray addObject:project];
             [_allObjects setObject:project forKey:uuid];
         }
     }
@@ -242,6 +263,7 @@
             resourcesBuildPhase.files = [object objectForKey:@"files"];
             resourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
             [_resourcesBuildPhases setObject:resourcesBuildPhase forKey:uuid];
+            [_resourcesBuildPhasesArray addObject:resourcesBuildPhase];
             [_allObjects setObject:resourcesBuildPhase forKey:uuid];
         }
     }
@@ -258,6 +280,7 @@
             sourcesBuildPhase.files = [object objectForKey:@"files"];
             sourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
             [_sourcesBuildPhases setObject:sourcesBuildPhase forKey:uuid];
+            [_sourcesBuildPhasesArray addObject:sourcesBuildPhase];
             [_allObjects setObject:sourcesBuildPhase forKey:uuid];
         }
     }
@@ -277,6 +300,7 @@
                 variantGroup.name = @"<Unknown Group>";
             }
             [_variantGroups setObject:variantGroup forKey:uuid];
+            [_variantGroupsArray addObject:variantGroup];
             [_allObjects setObject:variantGroup forKey:uuid];
         }
     }
@@ -294,6 +318,7 @@
             containerItemProxy.remoteGlobalIDString = [object objectForKey:@"remoteGlobalIDString"];
             containerItemProxy.remoteInfo = [object objectForKey:@"remoteInfo"];
             [_containerItemProxies setObject:containerItemProxy forKey:uuid];
+            [_containerItemProxiesArray addObject:containerItemProxy];
             [_allObjects setObject:containerItemProxy forKey:uuid];
         }
     }
@@ -309,6 +334,7 @@
             targetDependency.name = [object objectForKey:@"target"];
             targetDependency.targetProxy = [object objectForKey:@"targetProxy"];
             [_targetDependencies setObject:targetDependency forKey:uuid];
+            [_targetDependenciesArray addObject:targetDependency];
             [_allObjects setObject:targetDependency forKey:uuid];
         }
     }
@@ -326,6 +352,7 @@
             referenceProxy.remoteRef = [object objectForKey:@"remoteRef"];
             referenceProxy.sourceTree = [object objectForKey:@"sourceTree"];
             [_referenceProxies setObject:referenceProxy forKey:uuid];
+            [_referenceProxiesArray addObject:referenceProxy];
             [_allObjects setObject:referenceProxy forKey:uuid];
         }
     }
@@ -347,6 +374,7 @@
             shellScriptBuildPhase.shellPath = [object objectForKey:@"shellPath"];
             shellScriptBuildPhase.shellScript = [object objectForKey:@"shellScript"];
             [_shellScriptBuildPhases setObject:shellScriptBuildPhase forKey:uuid];
+            [_shellScriptBuildPhasesArray addObject:shellScriptBuildPhase];
             [_allObjects setObject:shellScriptBuildPhase forKey:uuid];
         }
     }
@@ -362,6 +390,7 @@
             buildConfiguration.buildSettings = [object objectForKey:@"buildSettings"];
             buildConfiguration.name = [object objectForKey:@"name"];
             [_buildConfigurations setObject:buildConfiguration forKey:uuid];
+            [_buildConfigurationsArray addObject:buildConfiguration];
             [_allObjects setObject:buildConfiguration forKey:uuid];
         }
     }
@@ -378,6 +407,7 @@
             configurationList.defaultConfigurationIsVisible = [object objectForKey:@"defaultConfigurationIsVisible"];
             configurationList.defaultConfigurationName = [object objectForKey:@"defaultConfigurationName"];
             [_configurationLists setObject:configurationList forKey:uuid];
+            [_configurationListsArray addObject:configurationList];
             [_allObjects setObject:configurationList forKey:uuid];
         }
     }
@@ -420,154 +450,154 @@
     return _allObjects;
 }
 
-- (NSDictionary *)buildFiles
+- (NSArray *)buildFiles
 {
-    return _buildFiles;
+    return _buildFilesArray;
 }
 
-- (NSDictionary *)fileReferences
+- (NSArray *)fileReferences
 {
-    return _fileReferences;
+    return _fileReferencesArray;
 }
 
-- (NSDictionary *)frameworksBuildPhases
+- (NSArray *)frameworksBuildPhases
 {
-    return _frameworksBuildPhases;
+    return _frameworksBuildPhasesArray;
 }
 
-- (NSDictionary *)groups
+- (NSArray *)groups
 {
-    return _groups;
+    return _groupsArray;
 }
 
-- (NSDictionary *)nativeTargets
+- (NSArray *)nativeTargets
 {
-    return _nativeTargets;
+    return _nativeTargetsArray;
 }
 
-- (NSDictionary *)projects
+- (NSArray *)projects
 {
-    return _projects;
+    return _projectsArray;
 }
 
-- (NSDictionary *)resourcesBuildPhases
+- (NSArray *)resourcesBuildPhases
 {
-    return _resourcesBuildPhases;
+    return _resourcesBuildPhasesArray;
 }
 
-- (NSDictionary *)sourcesBuildPhases
+- (NSArray *)sourcesBuildPhases
 {
-    return _sourcesBuildPhases;
+    return _sourcesBuildPhasesArray;
 }
 
-- (NSDictionary *)variantGroups
+- (NSArray *)variantGroups
 {
-    return _variantGroups;
+    return _variantGroupsArray;
 }
 
-- (NSDictionary *)containerItemProxies
+- (NSArray *)containerItemProxies
 {
-    return _containerItemProxies;
+    return _containerItemProxiesArray;
 }
 
-- (NSDictionary *)referenceProxies
+- (NSArray *)referenceProxies
 {
-    return _referenceProxies;
+    return _referenceProxiesArray;
 }
 
-- (NSDictionary *)targetDependencies
+- (NSArray *)targetDependencies
 {
-    return _targetDependencies;
+    return _targetDependenciesArray;
 }
 
-- (NSDictionary *)shellScriptBuildPhases
+- (NSArray *)shellScriptBuildPhases
 {
-    return _shellScriptBuildPhases;
+    return _shellScriptBuildPhasesArray;
 }
 
-- (NSDictionary *)buildConfigurations
+- (NSArray *)buildConfigurations
 {
-    return _buildConfigurations;
+    return _buildConfigurationsArray;
 }
 
-- (NSDictionary *)configurationLists
+- (NSArray *)configurationLists
 {
-    return _configurationLists;
+    return _configurationListsArray;
 }
 
 - (MJPBXBuildFile *)buildFileById:(NSString *)uuid
 {
-    return [self.buildFiles objectForKey:uuid];
+    return [_buildFiles objectForKey:uuid];
 }
 
 - (MJPBXFileReference *)fileReferenceById:(NSString *)uuid
 {
-    return [self.fileReferences objectForKey:uuid];
+    return [_fileReferences objectForKey:uuid];
 }
 
 - (MJPBXFrameworksBuildPhase *)frameworksBuildPhaseById:(NSString *)uuid
 {
-    return [self.frameworksBuildPhases objectForKey:uuid];
+    return [_frameworksBuildPhases objectForKey:uuid];
 }
 
 - (MJPBXGroup *)groupById:(NSString *)uuid
 {
-    return [self.groups objectForKey:uuid];
+    return [_groups objectForKey:uuid];
 }
 
 - (MJPBXNativeTarget *)nativeTargetById:(NSString *)uuid
 {
-    return [self.nativeTargets objectForKey:uuid];
+    return [_nativeTargets objectForKey:uuid];
 }
 
 - (MJPBXProject *)projectById:(NSString *)uuid
 {
-    return [self.projects objectForKey:uuid];
+    return [_projects objectForKey:uuid];
 }
 
 - (MJPBXResourcesBuildPhase *)resourcesBuildPhaseById:(NSString *)uuid
 {
-    return [self.resourcesBuildPhases objectForKey:uuid];
+    return [_resourcesBuildPhases objectForKey:uuid];
 }
 
 - (MJPBXSourcesBuildPhase *)sourcesBuildPhaseById:(NSString *)uuid
 {
-    return [self.sourcesBuildPhases objectForKey:uuid];
+    return [_sourcesBuildPhases objectForKey:uuid];
 }
 
 - (MJPBXVariantGroup *)variantGroupById:(NSString *)uuid
 {
-    return [self.variantGroups objectForKey:uuid];
+    return [_variantGroups objectForKey:uuid];
 }
 
 - (MJPBXContainerItemProxy *)containerItemById:(NSString *)uuid
 {
-    return [self.containerItemProxies objectForKey:uuid];
+    return [_containerItemProxies objectForKey:uuid];
 }
 
 - (MJPBXReferenceProxy *)referenceProxyById:(NSString *)uuid
 {
-    return [self.referenceProxies objectForKey:uuid];
+    return [_referenceProxies objectForKey:uuid];
 }
 
 - (MJPBXTargetDependency *)targetDependencyById:(NSString *)uuid
 {
-    return [self.targetDependencies objectForKey:uuid];
+    return [_targetDependencies objectForKey:uuid];
 }
 
 - (MJPBXShellScriptBuildPhase *)shellScriptBuildPhaseById:(NSString *)uuid
 {
-    return [self.shellScriptBuildPhases objectForKey:uuid];
+    return [_shellScriptBuildPhases objectForKey:uuid];
 }
 
 - (MJXCBuildConfiguration *)buildConfigurationById:(NSString *)uuid
 {
-    return [self.buildConfigurations objectForKey:uuid];
+    return [_buildConfigurations objectForKey:uuid];
 }
 
 - (MJXCConfigurationList *)configurationListById:(NSString *)uuid
 {
-    return [self.configurationLists objectForKey:uuid];
+    return [_configurationLists objectForKey:uuid];
 }
 
 @end

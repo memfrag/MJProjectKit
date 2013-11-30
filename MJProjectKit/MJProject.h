@@ -52,21 +52,21 @@
 
 @property (nonatomic, readonly, strong) NSDictionary *allObjects;
 
-@property (nonatomic, readonly, strong) NSDictionary *buildFiles;
-@property (nonatomic, readonly, strong) NSDictionary *fileReferences;
-@property (nonatomic, readonly, strong) NSDictionary *frameworksBuildPhases;
-@property (nonatomic, readonly, strong) NSDictionary *groups;
-@property (nonatomic, readonly, strong) NSDictionary *nativeTargets;
-@property (nonatomic, readonly, strong) NSDictionary *projects;
-@property (nonatomic, readonly, strong) NSDictionary *resourcesBuildPhases;
-@property (nonatomic, readonly, strong) NSDictionary *sourcesBuildPhases;
-@property (nonatomic, readonly, strong) NSDictionary *variantGroups;
-@property (nonatomic, readonly, strong) NSDictionary *containerItemProxies;
-@property (nonatomic, readonly, strong) NSDictionary *referenceProxies;
-@property (nonatomic, readonly, strong) NSDictionary *targetDependencies;
-@property (nonatomic, readonly, strong) NSDictionary *shellScriptBuildPhases;
-@property (nonatomic, readonly, strong) NSDictionary *buildConfigurations;
-@property (nonatomic, readonly, strong) NSDictionary *configurationLists;
+@property (nonatomic, readonly, strong) NSArray *buildFiles;
+@property (nonatomic, readonly, strong) NSArray *fileReferences;
+@property (nonatomic, readonly, strong) NSArray *frameworksBuildPhases;
+@property (nonatomic, readonly, strong) NSArray *groups;
+@property (nonatomic, readonly, strong) NSArray *nativeTargets;
+@property (nonatomic, readonly, strong) NSArray *projects;
+@property (nonatomic, readonly, strong) NSArray *resourcesBuildPhases;
+@property (nonatomic, readonly, strong) NSArray *sourcesBuildPhases;
+@property (nonatomic, readonly, strong) NSArray *variantGroups;
+@property (nonatomic, readonly, strong) NSArray *containerItemProxies;
+@property (nonatomic, readonly, strong) NSArray *referenceProxies;
+@property (nonatomic, readonly, strong) NSArray *targetDependencies;
+@property (nonatomic, readonly, strong) NSArray *shellScriptBuildPhases;
+@property (nonatomic, readonly, strong) NSArray *buildConfigurations;
+@property (nonatomic, readonly, strong) NSArray *configurationLists;
 
 + (MJProject *)projectWithContentsOfURL:(NSURL *)url
                                   error:(__autoreleasing NSError **)error;
