@@ -7,6 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B28C1D5184B67FC00EF4CA3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B95648416D8E99D0071DE71 /* Cocoa.framework */; };
+		5B28C1F5184B687100EF4CA3 /* MJProjectKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B95649116D8E99D0071DE71 /* MJProjectKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C1F6184B68AB00EF4CA3 /* MJProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B95649B16D8EA0F0071DE71 /* MJProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C1F7184B68AF00EF4CA3 /* MJProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B95649C16D8EA0F0071DE71 /* MJProject.m */; };
+		5B28C1F8184B68B100EF4CA3 /* MJProjectObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B95649F16D8EA840071DE71 /* MJProjectObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C1F9184B68B600EF4CA3 /* MJProjectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564A016D8EA840071DE71 /* MJProjectObject.m */; };
+		5B28C1FA184B68B900EF4CA3 /* MJPBXBuildFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564A316D8EAD20071DE71 /* MJPBXBuildFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C1FB184B68BD00EF4CA3 /* MJPBXBuildFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564A416D8EAD20071DE71 /* MJPBXBuildFile.m */; };
+		5B28C1FC184B68C000EF4CA3 /* MJPBXContainerItemProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564A716D8EB0A0071DE71 /* MJPBXContainerItemProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C1FD184B68C400EF4CA3 /* MJPBXContainerItemProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564A816D8EB0A0071DE71 /* MJPBXContainerItemProxy.m */; };
+		5B28C1FE184B68C700EF4CA3 /* MJPBXReferenceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564AB16D8EB230071DE71 /* MJPBXReferenceProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C1FF184B68CB00EF4CA3 /* MJPBXReferenceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564AC16D8EB230071DE71 /* MJPBXReferenceProxy.m */; };
+		5B28C200184B68CD00EF4CA3 /* MJPBXFileReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564AF16D8EB3D0071DE71 /* MJPBXFileReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C201184B68D200EF4CA3 /* MJPBXFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564B016D8EB3D0071DE71 /* MJPBXFileReference.m */; };
+		5B28C202184B68D400EF4CA3 /* MJPBXGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564B316D8EB4C0071DE71 /* MJPBXGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C203184B68D900EF4CA3 /* MJPBXGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564B416D8EB4C0071DE71 /* MJPBXGroup.m */; };
+		5B28C204184B68DB00EF4CA3 /* MJPBXNativeTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564B716D8EB5F0071DE71 /* MJPBXNativeTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C205184B68DF00EF4CA3 /* MJPBXNativeTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564B816D8EB5F0071DE71 /* MJPBXNativeTarget.m */; };
+		5B28C206184B68E200EF4CA3 /* MJPBXTargetDependency.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564BB16D8EB710071DE71 /* MJPBXTargetDependency.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C207184B68E600EF4CA3 /* MJPBXTargetDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564BC16D8EB710071DE71 /* MJPBXTargetDependency.m */; };
+		5B28C208184B68E900EF4CA3 /* MJPBXProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564BF16D8EB800071DE71 /* MJPBXProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C209184B68ED00EF4CA3 /* MJPBXProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564C016D8EB800071DE71 /* MJPBXProject.m */; };
+		5B28C20A184B68F000EF4CA3 /* MJPBXVariantGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564C316D8EB900071DE71 /* MJPBXVariantGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C20B184B68F400EF4CA3 /* MJPBXVariantGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564C416D8EB900071DE71 /* MJPBXVariantGroup.m */; };
+		5B28C20C184B68F800EF4CA3 /* MJXCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564C716D8EBA80071DE71 /* MJXCBuildConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C20D184B68FD00EF4CA3 /* MJXCBuildConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564C816D8EBA80071DE71 /* MJXCBuildConfiguration.m */; };
+		5B28C20E184B68FF00EF4CA3 /* MJXCConfigurationList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564CB16D8EBB80071DE71 /* MJXCConfigurationList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28C20F184B690400EF4CA3 /* MJXCConfigurationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564CC16D8EBB80071DE71 /* MJXCConfigurationList.m */; };
 		5B95648516D8E99D0071DE71 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B95648416D8E99D0071DE71 /* Cocoa.framework */; };
 		5B95648F16D8E99D0071DE71 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B95648D16D8E99D0071DE71 /* InfoPlist.strings */; };
 		5B95649916D8E9C60071DE71 /* MJProjectKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B95649116D8E99D0071DE71 /* MJProjectKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,46 +73,11 @@
 		5B9564DE16D8EC030071DE71 /* MJPBXSourcesBuildPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564DC16D8EC030071DE71 /* MJPBXSourcesBuildPhase.m */; };
 		5B9564E116D8EC140071DE71 /* MJPBXShellScriptBuildPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564DF16D8EC140071DE71 /* MJPBXShellScriptBuildPhase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B9564E216D8EC140071DE71 /* MJPBXShellScriptBuildPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564E016D8EC140071DE71 /* MJPBXShellScriptBuildPhase.m */; };
-		5BFA129C16F9020200064BFF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B95648416D8E99D0071DE71 /* Cocoa.framework */; };
-		5BFA12AC16F9027D00064BFF /* MJProjectKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B95649116D8E99D0071DE71 /* MJProjectKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12AD16F9027D00064BFF /* MJProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B95649B16D8EA0F0071DE71 /* MJProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12AE16F9027D00064BFF /* MJProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B95649C16D8EA0F0071DE71 /* MJProject.m */; };
-		5BFA12AF16F9027D00064BFF /* MJProjectObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B95649F16D8EA840071DE71 /* MJProjectObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12B016F9027D00064BFF /* MJProjectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564A016D8EA840071DE71 /* MJProjectObject.m */; };
-		5BFA12B116F9027D00064BFF /* MJPBXBuildFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564A316D8EAD20071DE71 /* MJPBXBuildFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12B216F9027D00064BFF /* MJPBXBuildFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564A416D8EAD20071DE71 /* MJPBXBuildFile.m */; };
-		5BFA12B316F9027D00064BFF /* MJPBXContainerItemProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564A716D8EB0A0071DE71 /* MJPBXContainerItemProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12B416F9027D00064BFF /* MJPBXContainerItemProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564A816D8EB0A0071DE71 /* MJPBXContainerItemProxy.m */; };
-		5BFA12B516F9027D00064BFF /* MJPBXReferenceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564AB16D8EB230071DE71 /* MJPBXReferenceProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12B616F9027D00064BFF /* MJPBXReferenceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564AC16D8EB230071DE71 /* MJPBXReferenceProxy.m */; };
-		5BFA12B716F9027D00064BFF /* MJPBXFileReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564AF16D8EB3D0071DE71 /* MJPBXFileReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12B816F9027D00064BFF /* MJPBXFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564B016D8EB3D0071DE71 /* MJPBXFileReference.m */; };
-		5BFA12B916F9027D00064BFF /* MJPBXGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564B316D8EB4C0071DE71 /* MJPBXGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12BA16F9027D00064BFF /* MJPBXGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564B416D8EB4C0071DE71 /* MJPBXGroup.m */; };
-		5BFA12BB16F9027D00064BFF /* MJPBXNativeTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564B716D8EB5F0071DE71 /* MJPBXNativeTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12BC16F9027D00064BFF /* MJPBXNativeTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564B816D8EB5F0071DE71 /* MJPBXNativeTarget.m */; };
-		5BFA12BD16F9027D00064BFF /* MJPBXTargetDependency.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564BB16D8EB710071DE71 /* MJPBXTargetDependency.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12BE16F9027D00064BFF /* MJPBXTargetDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564BC16D8EB710071DE71 /* MJPBXTargetDependency.m */; };
-		5BFA12BF16F9027D00064BFF /* MJPBXProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564BF16D8EB800071DE71 /* MJPBXProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12C016F9027D00064BFF /* MJPBXProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564C016D8EB800071DE71 /* MJPBXProject.m */; };
-		5BFA12C116F9027D00064BFF /* MJPBXVariantGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564C316D8EB900071DE71 /* MJPBXVariantGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12C216F9027D00064BFF /* MJPBXVariantGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564C416D8EB900071DE71 /* MJPBXVariantGroup.m */; };
-		5BFA12C316F9027D00064BFF /* MJXCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564C716D8EBA80071DE71 /* MJXCBuildConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12C416F9027D00064BFF /* MJXCBuildConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564C816D8EBA80071DE71 /* MJXCBuildConfiguration.m */; };
-		5BFA12C516F9027D00064BFF /* MJXCConfigurationList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564CB16D8EBB80071DE71 /* MJXCConfigurationList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12C616F9027D00064BFF /* MJXCConfigurationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564CC16D8EBB80071DE71 /* MJXCConfigurationList.m */; };
-		5BFA12C716F9028500064BFF /* MJPBXFrameworksBuildPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564D416D8EBE30071DE71 /* MJPBXFrameworksBuildPhase.m */; };
-		5BFA12C816F9028500064BFF /* MJPBXResourcesBuildPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564D816D8EBF50071DE71 /* MJPBXResourcesBuildPhase.m */; };
-		5BFA12C916F9028500064BFF /* MJPBXSourcesBuildPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564DC16D8EC030071DE71 /* MJPBXSourcesBuildPhase.m */; };
-		5BFA12CA16F9028500064BFF /* MJPBXShellScriptBuildPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9564E016D8EC140071DE71 /* MJPBXShellScriptBuildPhase.m */; };
-		5BFA12CB16F9029000064BFF /* MJPBXShellScriptBuildPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564DF16D8EC140071DE71 /* MJPBXShellScriptBuildPhase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12CC16F9029600064BFF /* MJPBXSourcesBuildPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564DB16D8EC030071DE71 /* MJPBXSourcesBuildPhase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12CD16F9029E00064BFF /* MJPBXResourcesBuildPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564D716D8EBF50071DE71 /* MJPBXResourcesBuildPhase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12CE16F902A300064BFF /* MJPBXFrameworksBuildPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564D316D8EBE30071DE71 /* MJPBXFrameworksBuildPhase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BFA12CF16F902A700064BFF /* MJBuildPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9564CF16D8EBCF0071DE71 /* MJBuildPhase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B28C1D4184B67FC00EF4CA3 /* libmjprojectkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmjprojectkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B28C1E1184B67FC00EF4CA3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5B95648116D8E99D0071DE71 /* MJProjectKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJProjectKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B95648416D8E99D0071DE71 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5B95648716D8E99D0071DE71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -129,24 +122,22 @@
 		5B9564DC16D8EC030071DE71 /* MJPBXSourcesBuildPhase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPBXSourcesBuildPhase.m; sourceTree = "<group>"; };
 		5B9564DF16D8EC140071DE71 /* MJPBXShellScriptBuildPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPBXShellScriptBuildPhase.h; sourceTree = "<group>"; };
 		5B9564E016D8EC140071DE71 /* MJPBXShellScriptBuildPhase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPBXShellScriptBuildPhase.m; sourceTree = "<group>"; };
-		5BFA129B16F9020200064BFF /* libMJProjectKitLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJProjectKitLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BFA129F16F9020200064BFF /* MJProjectKitLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MJProjectKitLib-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B28C1D1184B67FC00EF4CA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B28C1D5184B67FC00EF4CA3 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B95647D16D8E99D0071DE71 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5B95648516D8E99D0071DE71 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5BFA129816F9020200064BFF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BFA129C16F9020200064BFF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				5B95648A16D8E99D0071DE71 /* MJProjectKit */,
-				5BFA129D16F9020200064BFF /* MJProjectKitLib */,
 				5B95648316D8E99D0071DE71 /* Frameworks */,
 				5B95648216D8E99D0071DE71 /* Products */,
 			);
@@ -167,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				5B95648116D8E99D0071DE71 /* MJProjectKit.framework */,
-				5BFA129B16F9020200064BFF /* libMJProjectKitLib.a */,
+				5B28C1D4184B67FC00EF4CA3 /* libmjprojectkit.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				5B95648416D8E99D0071DE71 /* Cocoa.framework */,
+				5B28C1E1184B67FC00EF4CA3 /* XCTest.framework */,
 				5B95648616D8E99D0071DE71 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -253,25 +244,30 @@
 			name = "Build Phases";
 			sourceTree = "<group>";
 		};
-		5BFA129D16F9020200064BFF /* MJProjectKitLib */ = {
-			isa = PBXGroup;
-			children = (
-				5BFA129E16F9020200064BFF /* Supporting Files */,
-			);
-			path = MJProjectKitLib;
-			sourceTree = "<group>";
-		};
-		5BFA129E16F9020200064BFF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5BFA129F16F9020200064BFF /* MJProjectKitLib-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		5B28C1D2184B67FC00EF4CA3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B28C202184B68D400EF4CA3 /* MJPBXGroup.h in Headers */,
+				5B28C204184B68DB00EF4CA3 /* MJPBXNativeTarget.h in Headers */,
+				5B28C1F5184B687100EF4CA3 /* MJProjectKit.h in Headers */,
+				5B28C1FE184B68C700EF4CA3 /* MJPBXReferenceProxy.h in Headers */,
+				5B28C206184B68E200EF4CA3 /* MJPBXTargetDependency.h in Headers */,
+				5B28C1F8184B68B100EF4CA3 /* MJProjectObject.h in Headers */,
+				5B28C1F6184B68AB00EF4CA3 /* MJProject.h in Headers */,
+				5B28C200184B68CD00EF4CA3 /* MJPBXFileReference.h in Headers */,
+				5B28C20A184B68F000EF4CA3 /* MJPBXVariantGroup.h in Headers */,
+				5B28C1FA184B68B900EF4CA3 /* MJPBXBuildFile.h in Headers */,
+				5B28C1FC184B68C000EF4CA3 /* MJPBXContainerItemProxy.h in Headers */,
+				5B28C20C184B68F800EF4CA3 /* MJXCBuildConfiguration.h in Headers */,
+				5B28C208184B68E900EF4CA3 /* MJPBXProject.h in Headers */,
+				5B28C20E184B68FF00EF4CA3 /* MJXCConfigurationList.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B95647E16D8E99D0071DE71 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,35 +294,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BFA129916F9020200064BFF /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BFA12AC16F9027D00064BFF /* MJProjectKit.h in Headers */,
-				5BFA12AD16F9027D00064BFF /* MJProject.h in Headers */,
-				5BFA12AF16F9027D00064BFF /* MJProjectObject.h in Headers */,
-				5BFA12B116F9027D00064BFF /* MJPBXBuildFile.h in Headers */,
-				5BFA12B316F9027D00064BFF /* MJPBXContainerItemProxy.h in Headers */,
-				5BFA12B516F9027D00064BFF /* MJPBXReferenceProxy.h in Headers */,
-				5BFA12B716F9027D00064BFF /* MJPBXFileReference.h in Headers */,
-				5BFA12B916F9027D00064BFF /* MJPBXGroup.h in Headers */,
-				5BFA12BB16F9027D00064BFF /* MJPBXNativeTarget.h in Headers */,
-				5BFA12BD16F9027D00064BFF /* MJPBXTargetDependency.h in Headers */,
-				5BFA12BF16F9027D00064BFF /* MJPBXProject.h in Headers */,
-				5BFA12C116F9027D00064BFF /* MJPBXVariantGroup.h in Headers */,
-				5BFA12C316F9027D00064BFF /* MJXCBuildConfiguration.h in Headers */,
-				5BFA12C516F9027D00064BFF /* MJXCConfigurationList.h in Headers */,
-				5BFA12CB16F9029000064BFF /* MJPBXShellScriptBuildPhase.h in Headers */,
-				5BFA12CC16F9029600064BFF /* MJPBXSourcesBuildPhase.h in Headers */,
-				5BFA12CD16F9029E00064BFF /* MJPBXResourcesBuildPhase.h in Headers */,
-				5BFA12CE16F902A300064BFF /* MJPBXFrameworksBuildPhase.h in Headers */,
-				5BFA12CF16F902A700064BFF /* MJBuildPhase.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		5B28C1D3184B67FC00EF4CA3 /* mjprojectkit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B28C1EF184B67FC00EF4CA3 /* Build configuration list for PBXNativeTarget "mjprojectkit" */;
+			buildPhases = (
+				5B28C1D0184B67FC00EF4CA3 /* Sources */,
+				5B28C1D1184B67FC00EF4CA3 /* Frameworks */,
+				5B28C1D2184B67FC00EF4CA3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mjprojectkit;
+			productName = mjprojectkit;
+			productReference = 5B28C1D4184B67FC00EF4CA3 /* libmjprojectkit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		5B95648016D8E99D0071DE71 /* MJProjectKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B95649616D8E99D0071DE71 /* Build configuration list for PBXNativeTarget "MJProjectKit" */;
@@ -344,23 +331,6 @@
 			productName = MJProjectKit;
 			productReference = 5B95648116D8E99D0071DE71 /* MJProjectKit.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		5BFA129A16F9020200064BFF /* MJProjectKitLib */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5BFA12A516F9020200064BFF /* Build configuration list for PBXNativeTarget "MJProjectKitLib" */;
-			buildPhases = (
-				5BFA129716F9020200064BFF /* Sources */,
-				5BFA129816F9020200064BFF /* Frameworks */,
-				5BFA129916F9020200064BFF /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MJProjectKitLib;
-			productName = MJProjectKitLib;
-			productReference = 5BFA129B16F9020200064BFF /* libMJProjectKitLib.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -384,7 +354,7 @@
 			projectRoot = "";
 			targets = (
 				5B95648016D8E99D0071DE71 /* MJProjectKit */,
-				5BFA129A16F9020200064BFF /* MJProjectKitLib */,
+				5B28C1D3184B67FC00EF4CA3 /* mjprojectkit */,
 			);
 		};
 /* End PBXProject section */
@@ -401,6 +371,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B28C1D0184B67FC00EF4CA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B28C1F7184B68AF00EF4CA3 /* MJProject.m in Sources */,
+				5B28C1FD184B68C400EF4CA3 /* MJPBXContainerItemProxy.m in Sources */,
+				5B28C1F9184B68B600EF4CA3 /* MJProjectObject.m in Sources */,
+				5B28C1FF184B68CB00EF4CA3 /* MJPBXReferenceProxy.m in Sources */,
+				5B28C20F184B690400EF4CA3 /* MJXCConfigurationList.m in Sources */,
+				5B28C20B184B68F400EF4CA3 /* MJPBXVariantGroup.m in Sources */,
+				5B28C1FB184B68BD00EF4CA3 /* MJPBXBuildFile.m in Sources */,
+				5B28C205184B68DF00EF4CA3 /* MJPBXNativeTarget.m in Sources */,
+				5B28C207184B68E600EF4CA3 /* MJPBXTargetDependency.m in Sources */,
+				5B28C203184B68D900EF4CA3 /* MJPBXGroup.m in Sources */,
+				5B28C20D184B68FD00EF4CA3 /* MJXCBuildConfiguration.m in Sources */,
+				5B28C201184B68D200EF4CA3 /* MJPBXFileReference.m in Sources */,
+				5B28C209184B68ED00EF4CA3 /* MJPBXProject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B95647C16D8E99D0071DE71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,30 +415,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BFA129716F9020200064BFF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BFA12AE16F9027D00064BFF /* MJProject.m in Sources */,
-				5BFA12B016F9027D00064BFF /* MJProjectObject.m in Sources */,
-				5BFA12B216F9027D00064BFF /* MJPBXBuildFile.m in Sources */,
-				5BFA12B416F9027D00064BFF /* MJPBXContainerItemProxy.m in Sources */,
-				5BFA12B616F9027D00064BFF /* MJPBXReferenceProxy.m in Sources */,
-				5BFA12B816F9027D00064BFF /* MJPBXFileReference.m in Sources */,
-				5BFA12BA16F9027D00064BFF /* MJPBXGroup.m in Sources */,
-				5BFA12BC16F9027D00064BFF /* MJPBXNativeTarget.m in Sources */,
-				5BFA12BE16F9027D00064BFF /* MJPBXTargetDependency.m in Sources */,
-				5BFA12C016F9027D00064BFF /* MJPBXProject.m in Sources */,
-				5BFA12C216F9027D00064BFF /* MJPBXVariantGroup.m in Sources */,
-				5BFA12C416F9027D00064BFF /* MJXCBuildConfiguration.m in Sources */,
-				5BFA12C616F9027D00064BFF /* MJXCConfigurationList.m in Sources */,
-				5BFA12C716F9028500064BFF /* MJPBXFrameworksBuildPhase.m in Sources */,
-				5BFA12C816F9028500064BFF /* MJPBXResourcesBuildPhase.m in Sources */,
-				5BFA12C916F9028500064BFF /* MJPBXSourcesBuildPhase.m in Sources */,
-				5BFA12CA16F9028500064BFF /* MJPBXShellScriptBuildPhase.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -463,6 +429,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5B28C1F0184B67FC00EF4CA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mjprojectkit/mjprojectkit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INSTALL_PATH = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRIVATE_HEADERS_FOLDER_PATH = include;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include;
+			};
+			name = Debug;
+		};
+		5B28C1F1184B67FC00EF4CA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mjprojectkit/mjprojectkit-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INSTALL_PATH = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRIVATE_HEADERS_FOLDER_PATH = include;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include;
+			};
+			name = Release;
+		};
 		5B95649416D8E99D0071DE71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -552,27 +561,17 @@
 			};
 			name = Release;
 		};
-		5BFA12A316F9020200064BFF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MJProjectKitLib/MJProjectKitLib-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		5BFA12A416F9020200064BFF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MJProjectKitLib/MJProjectKitLib-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B28C1EF184B67FC00EF4CA3 /* Build configuration list for PBXNativeTarget "mjprojectkit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B28C1F0184B67FC00EF4CA3 /* Debug */,
+				5B28C1F1184B67FC00EF4CA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		5B95647B16D8E99D0071DE71 /* Build configuration list for PBXProject "MJProjectKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -590,14 +589,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		5BFA12A516F9020200064BFF /* Build configuration list for PBXNativeTarget "MJProjectKitLib" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5BFA12A316F9020200064BFF /* Debug */,
-				5BFA12A416F9020200064BFF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
