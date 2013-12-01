@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJPBXGroup : MJProjectObject
+@interface MJPBXGroup : MJProjectFileObject
 
 @property (nonatomic, strong) NSArray *children; // uuid references
 @property (nonatomic, copy) NSString *name;

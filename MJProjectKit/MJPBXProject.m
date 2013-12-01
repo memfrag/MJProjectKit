@@ -23,14 +23,14 @@
 //
 
 #import "MJPBXProject.h"
-#import "MJProject.h"
+#import "MJProjectFile.h"
 
 @implementation MJPBXProject
 
 - (NSString *)title
 {
     if (self.mainGroup) {
-        return self.project.allObjects[self.mainGroup];
+        return self.projectFile.allObjects[self.mainGroup];
     } else {
         return [super title];
     }

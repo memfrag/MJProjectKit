@@ -23,10 +23,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 #import <MJProjectKit/MJBuildPhase.h>
 
-@interface MJPBXShellScriptBuildPhase : MJProjectObject <MJBuildPhase>
+@interface MJPBXShellScriptBuildPhase : MJProjectFileObject <MJBuildPhase>
 
 @property (nonatomic, copy) NSString *comments;
 @property (nonatomic, strong) NSArray *inputPaths;

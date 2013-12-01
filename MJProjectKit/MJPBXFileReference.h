@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJPBXFileReference : MJProjectObject
+@interface MJPBXFileReference : MJProjectFileObject
 
 // Output file
 @property (nonatomic, copy) NSString *explicitFileType;

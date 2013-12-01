@@ -24,12 +24,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class MJProject;
+@class MJProjectFile;
 
-@interface MJProjectObject : NSObject
+@interface MJProjectFileObject : NSObject
 
 @property (nonatomic, copy) NSString *uuid;
-@property (nonatomic, weak) MJProject *project;
+@property (nonatomic, weak) MJProjectFile *projectFile;
 
 - (NSString *)title;
 - (BOOL)hasChildren;

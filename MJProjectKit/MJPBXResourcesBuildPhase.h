@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 #import <MJProjectKit/MJBuildPhase.h>
 
-@interface MJPBXResourcesBuildPhase : MJProjectObject <MJBuildPhase>
+@interface MJPBXResourcesBuildPhase : MJProjectFileObject <MJBuildPhase>
 
 @end

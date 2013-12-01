@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJPBXContainerItemProxy : MJProjectObject
+@interface MJPBXContainerItemProxy : MJProjectFileObject
 
 @property (nonatomic, copy) NSString *containerPortal;
 @property (nonatomic, copy) NSNumber *proxyType;

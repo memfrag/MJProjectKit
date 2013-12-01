@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJPBXProject : MJProjectObject
+@interface MJPBXProject : MJProjectFileObject
 
 @property (nonatomic, strong) NSDictionary *attributes;
 @property (nonatomic, copy) NSString *buildConfigurationList;

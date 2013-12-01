@@ -22,10 +22,10 @@
 //  (MIT License)
 //
 
-#import "MJProjectObject.h"
-#import "MJProject.h"
+#import "MJProjectFileObject.h"
+#import "MJProjectFile.h"
 
-@implementation MJProjectObject
+@implementation MJProjectFileObject
 
 - (NSString *)title
 {

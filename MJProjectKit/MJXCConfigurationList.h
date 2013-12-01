@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJXCConfigurationList : MJProjectObject
+@interface MJXCConfigurationList : MJProjectFileObject
 
 @property (nonatomic, strong) NSArray *buildConfigurations;
 @property (nonatomic, copy) NSNumber *defaultConfigurationIsVisible;

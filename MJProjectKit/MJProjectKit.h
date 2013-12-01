@@ -24,8 +24,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import <MJProjectKit/MJProject.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFile.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 #import <MJProjectKit/MJPBXBuildFile.h>
 #import <MJProjectKit/MJPBXContainerItemProxy.h>
 #import <MJProjectKit/MJPBXReferenceProxy.h>

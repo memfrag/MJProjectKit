@@ -22,7 +22,7 @@
 //  (MIT License)
 //
 
-#import "MJProject.h"
+#import "MJProjectFile.h"
 #import "MJPBXBuildFile.h"
 #import "MJPBXFileReference.h"
 #import "MJPBXFrameworksBuildPhase.h"
@@ -39,7 +39,7 @@
 #import "MJXCBuildConfiguration.h"
 #import "MJXCConfigurationList.h"
 
-@implementation MJProject {
+@implementation MJProjectFile {
     NSDictionary *_specification;
     
     NSNumber *_archiveVersion;
@@ -82,10 +82,10 @@
     NSMutableArray *_configurationListsArray;
 }
 
-+ (MJProject *)projectWithContentsOfURL:(NSURL *)url
-                                  error:(__autoreleasing NSError **)error
++ (MJProjectFile *)projectFileWithContentsOfURL:(NSURL *)url
+                                          error:(__autoreleasing NSError **)error
 {
-    MJProject *project = [[MJProject alloc] init];
+    MJProjectFile *projectFile = [[MJProjectFile alloc] init];
     
     NSData *data = [NSData dataWithContentsOfURL:url];
     
@@ -98,10 +98,10 @@
         return nil;
     }
     
-    [project setSpecification:specification];
-    [project parseSpecification];
+    [projectFile setSpecification:specification];
+    [projectFile parseSpecification];
     
-    return project;
+    return projectFile;
 }
 
 - (void)setSpecification:(NSDictionary *)specification
@@ -174,7 +174,7 @@
 {
     MJPBXBuildFile *buildFile = [[MJPBXBuildFile alloc] init];
     buildFile.uuid = uuid;
-    buildFile.project = self;
+    buildFile.projectFile = self;
     buildFile.fileRef = [object objectForKey:@"fileRef"];
     [_buildFiles setObject:buildFile forKey:uuid];
     [_buildFilesArray addObject:buildFile];
@@ -185,7 +185,7 @@
 {
     MJPBXFileReference *fileReference = [[MJPBXFileReference alloc] init];
     fileReference.uuid = uuid;
-    fileReference.project = self;
+    fileReference.projectFile = self;
     fileReference.explicitFileType = [object objectForKey:@"explicitFileType"];
     fileReference.includeInIndex = [object objectForKey:@"includeInIndex"];
     fileReference.lastKnownFileType = [object objectForKey:@"lastKnownFileType"];
@@ -208,7 +208,7 @@
 {
     MJPBXFrameworksBuildPhase *frameworksBuildPhase = [[MJPBXFrameworksBuildPhase alloc] init];
     frameworksBuildPhase.uuid = uuid;
-    frameworksBuildPhase.project = self;
+    frameworksBuildPhase.projectFile = self;
     frameworksBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
     frameworksBuildPhase.files = [object objectForKey:@"files"];
     frameworksBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostProcessing"];
@@ -221,7 +221,7 @@
 {
     MJPBXGroup *group = [[MJPBXGroup alloc] init];
     group.uuid = uuid;
-    group.project = self;
+    group.projectFile = self;
     group.children = [object objectForKey:@"children"];
     group.name = [object objectForKey:@"name"];
     group.sourceTree = [object objectForKey:@"sourceTree"];
@@ -242,7 +242,7 @@
 {
     MJPBXNativeTarget *nativeTarget = [[MJPBXNativeTarget alloc] init];
     nativeTarget.uuid = uuid;
-    nativeTarget.project = self;
+    nativeTarget.projectFile = self;
     nativeTarget.buildConfigurationList = [object objectForKey:@"buildConfigurationList"];
     nativeTarget.buildPhases = [object objectForKey:@"buildPhases"];
     nativeTarget.buildRules = [object objectForKey:@"buildRules"];
@@ -260,7 +260,7 @@
 {
     MJPBXProject *project = [[MJPBXProject alloc] init];
     project.uuid = uuid;
-    project.project = self;
+    project.projectFile = self;
     project.attributes = [object objectForKey:@"attributes"];
     project.buildConfigurationList = [object objectForKey:@"buildConfigurationList"];
     project.compatibilityVersion = [object objectForKey:@"compatibilityVersion"];
@@ -282,7 +282,7 @@
 {
     MJPBXResourcesBuildPhase *resourcesBuildPhase = [[MJPBXResourcesBuildPhase alloc] init];
     resourcesBuildPhase.uuid = uuid;
-    resourcesBuildPhase.project = self;
+    resourcesBuildPhase.projectFile = self;
     resourcesBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
     resourcesBuildPhase.files = [object objectForKey:@"files"];
     resourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
@@ -295,7 +295,7 @@
 {
     MJPBXSourcesBuildPhase *sourcesBuildPhase = [[MJPBXSourcesBuildPhase alloc] init];
     sourcesBuildPhase.uuid = uuid;
-    sourcesBuildPhase.project = self;
+    sourcesBuildPhase.projectFile = self;
     sourcesBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
     sourcesBuildPhase.files = [object objectForKey:@"files"];
     sourcesBuildPhase.runOnlyForDeploymentPostprocessing = [object objectForKey:@"runOnlyForDeploymentPostprocessing"];
@@ -308,7 +308,7 @@
 {
     MJPBXVariantGroup *variantGroup = [[MJPBXVariantGroup alloc] init];
     variantGroup.uuid = uuid;
-    variantGroup.project = self;
+    variantGroup.projectFile = self;
     variantGroup.children = [object objectForKey:@"children"];
     variantGroup.name = [object objectForKey:@"name"];
     variantGroup.sourceTree = [object objectForKey:@"sourceTree"];
@@ -324,7 +324,7 @@
 {
     MJPBXContainerItemProxy *containerItemProxy = [[MJPBXContainerItemProxy alloc] init];
     containerItemProxy.uuid = uuid;
-    containerItemProxy.project = self;
+    containerItemProxy.projectFile = self;
     containerItemProxy.containerPortal = [object objectForKey:@"containerPortal"];
     containerItemProxy.proxyType = [object objectForKey:@"proxyType"];
     containerItemProxy.remoteGlobalIDString = [object objectForKey:@"remoteGlobalIDString"];
@@ -338,7 +338,7 @@
 {
     MJPBXTargetDependency *targetDependency = [[MJPBXTargetDependency alloc] init];
     targetDependency.uuid = uuid;
-    targetDependency.project = self;
+    targetDependency.projectFile = self;
     targetDependency.name = [object objectForKey:@"target"];
     targetDependency.targetProxy = [object objectForKey:@"targetProxy"];
     [_targetDependencies setObject:targetDependency forKey:uuid];
@@ -350,7 +350,7 @@
 {
     MJPBXReferenceProxy *referenceProxy = [[MJPBXReferenceProxy alloc] init];
     referenceProxy.uuid = uuid;
-    referenceProxy.project = self;
+    referenceProxy.projectFile = self;
     referenceProxy.fileType = [object objectForKey:@"fileType"];
     referenceProxy.path = [object objectForKey:@"path"];
     referenceProxy.remoteRef = [object objectForKey:@"remoteRef"];
@@ -364,7 +364,7 @@
 {
     MJPBXShellScriptBuildPhase *shellScriptBuildPhase = [[MJPBXShellScriptBuildPhase alloc] init];
     shellScriptBuildPhase.uuid = uuid;
-    shellScriptBuildPhase.project = self;
+    shellScriptBuildPhase.projectFile = self;
     shellScriptBuildPhase.buildActionMask = [object objectForKey:@"buildActionMask"];
     shellScriptBuildPhase.comments = [object objectForKey:@"comments"];
     shellScriptBuildPhase.files = [object objectForKey:@"files"];
@@ -382,7 +382,7 @@
 {
     MJXCBuildConfiguration *buildConfiguration = [[MJXCBuildConfiguration alloc] init];
     buildConfiguration.uuid = uuid;
-    buildConfiguration.project = self;
+    buildConfiguration.projectFile = self;
     buildConfiguration.buildSettings = [object objectForKey:@"buildSettings"];
     buildConfiguration.name = [object objectForKey:@"name"];
     [_buildConfigurations setObject:buildConfiguration forKey:uuid];
@@ -394,7 +394,7 @@
 {
     MJXCConfigurationList *configurationList = [[MJXCConfigurationList alloc] init];
     configurationList.uuid = uuid;
-    configurationList.project = self;
+    configurationList.projectFile = self;
     configurationList.buildConfigurations = [object objectForKey:@"buildConfigurations"];
     configurationList.defaultConfigurationIsVisible = [object objectForKey:@"defaultConfigurationIsVisible"];
     configurationList.defaultConfigurationName = [object objectForKey:@"defaultConfigurationName"];

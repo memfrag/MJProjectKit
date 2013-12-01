@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJXCBuildConfiguration : MJProjectObject
+@interface MJXCBuildConfiguration : MJProjectFileObject
 
 @property (nonatomic, strong) NSDictionary *buildSettings;
 @property (nonatomic, copy) NSString *name;

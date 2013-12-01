@@ -43,7 +43,7 @@
 
 - (NSString *)childIdAtIndex:(NSUInteger)index
 {
-    return ((MJProjectObject *)self.children[index]).uuid;
+    return ((MJProjectFileObject *)self.children[index]).uuid;
 }
 
 @end

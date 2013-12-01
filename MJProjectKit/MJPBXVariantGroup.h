@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJPBXVariantGroup : MJProjectObject
+@interface MJPBXVariantGroup : MJProjectFileObject
 
 @property (nonatomic, strong) NSArray *children;
 @property (nonatomic, copy) NSString *name;

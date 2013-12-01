@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJPBXBuildFile : MJProjectObject
+@interface MJPBXBuildFile : MJProjectFileObject
 
 @property (nonatomic, copy) NSString *fileRef;
 

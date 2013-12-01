@@ -40,7 +40,7 @@
 @class MJXCBuildConfiguration;
 @class MJXCConfigurationList;
 
-@interface MJProject : NSObject
+@interface MJProjectFile : NSObject
 
 @property (nonatomic, readonly, strong) NSDictionary *specification;
 
@@ -68,8 +68,8 @@
 @property (nonatomic, readonly, strong) NSArray *buildConfigurations;
 @property (nonatomic, readonly, strong) NSArray *configurationLists;
 
-+ (MJProject *)projectWithContentsOfURL:(NSURL *)url
-                                  error:(__autoreleasing NSError **)error;
++ (MJProjectFile *)projectFileWithContentsOfURL:(NSURL *)url
+                                          error:(__autoreleasing NSError **)error;
 
 - (MJPBXBuildFile *)buildFileById:(NSString *)uuid;
 - (MJPBXFileReference *)fileReferenceById:(NSString *)uuid;

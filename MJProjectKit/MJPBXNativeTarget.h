@@ -23,9 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJProjectKit/MJProjectObject.h>
+#import <MJProjectKit/MJProjectFileObject.h>
 
-@interface MJPBXNativeTarget : MJProjectObject
+@interface MJPBXNativeTarget : MJProjectFileObject
 
 @property (nonatomic, copy) NSString *buildConfigurationList;
 @property (nonatomic, strong) NSArray *buildPhases;
